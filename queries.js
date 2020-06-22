@@ -3,7 +3,7 @@ const Pool = require('pg').Pool
 const pool = new Pool({
     user: 'me',
     host: 'localhost',
-    database: 'api',
+    database: 'nusery',
     password: '12345',
     port:5432,
 })
@@ -11,8 +11,8 @@ const pool = new Pool({
 
 
 //Get all users
-const getUsers = (req, res) => {
-    pool.query('SELECT * FROM users ORDER BY id ASC', (err, results) => {
+const getChild = (req, res) => {
+    pool.query('SELECT * FROM child', (err, results) => {
         if (err) {
             throw err
         }
@@ -24,7 +24,7 @@ const getUsers = (req, res) => {
 const getUserById = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
+    pool.query('SELECT * FROM child WHERE id = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
@@ -34,23 +34,23 @@ const getUserById = (request, response) => {
 
 
 const createUser = (request, response) => {
-    const { name, email } = request.body
+    const { name, code, date, weight, height } = request.body
 
-    pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
+    pool.query('INSERT INTO child (name, code, date, weight, height) VALUES ($1, $2, $3, $4, $5)', [name, code, date, weight, height], (error, results) => {
         if (error) {
             throw error
         }
-        response.status(201).send(`User added with ID: ${ id }`)
+        response.status(201).send(`User added with ID: ${result.insertId}`)
     })
 }
 
 const updateUser = (request, response) => {
     const id = parseInt(request.params.id)
-    const { name, email } = request.body
+    const { date, weight, height } = request.body
 
     pool.query(
-        'UPDATE users SET name = $1, email = $2 WHERE id = $3',
-        [name, email, id],
+        'UPDATE child SET  date = $1, height = $2, weight = $3 WHERE id = ' + id,
+        [date, height, weight],
         (error, results) => {
             if (error) {
                 throw error
@@ -63,7 +63,7 @@ const updateUser = (request, response) => {
 const deleteUser = (request, response) => {
     const id = parseInt(request.params.id)
 
-    pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
+    pool.query('DELETE FROM child WHERE id = $1', [id], (error, results) => {
         if (error) {
             throw error
         }
@@ -72,7 +72,7 @@ const deleteUser = (request, response) => {
 }
 
 module.exports = {
-    getUsers,
+    getChild,
     getUserById,
     createUser,
     updateUser,
