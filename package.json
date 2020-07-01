@@ -1,12 +1,28 @@
 {
-  "name": "node-api-postgres",
+  "name": "api-postgres",
   "version": "1.0.0",
-  "description": "RESTful API with Node.js, Express, and PostgreSQL",
-  "main": "index.js",
+  "description": "[![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/)",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "author": "Suphanice",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuphakornHomnan/Nusery-Server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SuphakornHomnan/Nusery-Server/issues"
+  },
+  "homepage": "https://github.com/SuphakornHomnan/Nusery-Server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }

@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const db = require('./queries')
+const db = require('./database')
 const api = require('./routes')
 const port = 4000
 const cors = require('cors')
@@ -20,7 +20,7 @@ app.use(cors({
 }))
 
 app.get('/', (req, res) => {
-    res.json({ info: 'Node.js, Express, and Postres API'})
+    res.send(`<h1>Hello welcome to nodeJS server</h1>`)
 })
 
 app.use('/api',api)
