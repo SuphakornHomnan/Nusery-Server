@@ -11,7 +11,7 @@ module.exports = {
         })
     },
     getList(req, res) {
-        database.query('SELECT * FROM stock', (err, results) => {
+        database.query('SELECT * FROM stock ORDER BY id ASC', (err, results) => {
             if (err) {
                 throw err
             }
