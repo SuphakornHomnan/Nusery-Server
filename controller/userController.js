@@ -41,15 +41,6 @@ module.exports = {
         //encrypt password
         bcrypt.hash(password, saltRounds, function (err, hash) {
             console.log(hash);
-
-            // bcrypt.compare(password, hash, function (err, result) {
-            //     console.log(result);
-
-            // });
-            // bcrypt.compare("12345", hash, function (err, result) {
-            //     console.log(result);
-
-            // });
             database.query('INSERT INTO users (username,password) VALUES ($1, $2)', [username, hash], (error, results) => {
                 if (error) {
                     throw error
