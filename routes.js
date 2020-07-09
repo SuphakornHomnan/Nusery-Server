@@ -7,4 +7,6 @@ router.use('/address', require('./routers/address'))
 router.use('/father', require('./routers/father'))
 router.use('/mother', require('./routers/mother'))
 router.use('/custodian', require('./routers/custodian'))
+router.use('/document',require('./routers/document'))
+
 module.exports = router;
