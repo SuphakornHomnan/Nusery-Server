@@ -6,6 +6,7 @@ const fatherController = require('./fatherController')
 const motherController = require('./motherController')
 const custodianController = require('./custodianController')
 const documentController = require('./documentController')
+const enrollmentController = require('./enrollmentController')
 module.exports = {
     userController,
     stockController,
@@ -14,5 +15,6 @@ module.exports = {
     fatherController,
     motherController,
     custodianController,
-    documentController
+    documentController,
+    enrollmentController
 }
