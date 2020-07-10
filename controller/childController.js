@@ -37,19 +37,16 @@ module.exports = {
     },
     uploadPhoto(req, res) {
         if (req.file) {
-            console.log('have');
             const path = `/static/${req.file.filename}`
             const childID = req.params.id
-            console.log(childID);
             database.query(`UPDATE child SET child_photo = '${path}' WHERE child_id = '${childID}'`, (err, results) => {
                 if (err) {
                     throw err
                 }
-                res.status(204).json({ sucess: true, message: 'Complete to create data' })
+                res.status(204).json({ success: true, message: 'Complete to create data' })
             })
         } else {
             console.log('not have');
-
         }
     }
 } 
