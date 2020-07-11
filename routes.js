@@ -9,5 +9,6 @@ router.use('/mother', require('./routers/mother'))
 router.use('/custodian', require('./routers/custodian'))
 router.use('/document', require('./routers/document'))
 router.use('/enrollment', require('./routers/enrollment'))
+router.use('/medical', require('./routers/medical'))
 
 module.exports = router;

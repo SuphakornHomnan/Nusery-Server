@@ -12,7 +12,7 @@ module.exports = {
                 res.status(201).json({ success: "true", message: "Success to create enrollment list" })
             })
     },
-    uploadEnroll(req,res) {
+    AddEnroll(req,res) {
         console.log(req.body);
         const { child_name, address_emergency, sign_date, uuid, name } = req.body
         database.query(`UPDATE enrollment SET child_name = '${child_name}', address_emergency = '${address_emergency}', sign_date = '${sign_date}', uuid = '${uuid}' WHERE name = '${name}'`, (err, results) => {

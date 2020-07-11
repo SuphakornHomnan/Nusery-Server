@@ -3,8 +3,6 @@ const database = require('../database')
 module.exports = {
     createMother(req, res) {
         const { name, occupation, id_card, email, telephone, child_name } = req.body
-
-
         if (name == '' || occupation == '' || id_card == '' || email == '' || telephone == '' || child_name == '') {
             res.json({ success: false, message: 'emty' })
         } else {

@@ -13,7 +13,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 
 router.post('/upload', controller.enrollmentController.createEnroll)
-router.put('/update', controller.enrollmentController.uploadEnroll)
+router.put('/update', controller.enrollmentController.AddEnroll)
 router.put('/uploadPhoto/:id', upload.single('signPhoto'), controller.enrollmentController.uploadPhoto)
 
 module.exports = router
