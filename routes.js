@@ -10,5 +10,5 @@ router.use('/custodian', require('./routers/custodian'))
 router.use('/document', require('./routers/document'))
 router.use('/enrollment', require('./routers/enrollment'))
 router.use('/medicalHistory', require('./routers/medical'))
-
+router.use('/habitHistory', require('./routers/habit'))
 module.exports = router;

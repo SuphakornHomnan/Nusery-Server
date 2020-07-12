@@ -8,6 +8,7 @@ const custodianController = require('./custodianController')
 const documentController = require('./documentController')
 const enrollmentController = require('./enrollmentController')
 const medicalController = require('./medicalController')
+const habitController = require('./habitController')
 module.exports = {
     userController,
     stockController,
@@ -18,5 +19,6 @@ module.exports = {
     custodianController,
     documentController,
     enrollmentController,
-    medicalController
+    medicalController,
+    habitController
 }
