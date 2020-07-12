@@ -23,11 +23,11 @@ module.exports = {
         })
     },
     createChild(req, res) {
-        const { applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id } = req.body
-        if (applicationdate === '' || name === '' || nickname === '' || race === '' || nationality === '' || religion === '' || date === '' || number_of_siblings === '' || child_number === '' || weight === '' || height === '' || child_id === '') {
+        const { applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id, history_accident_illness, immunization_record } = req.body
+        if (applicationdate === '' || name === '' || nickname === '' || race === '' || nationality === '' || religion === '' || date === '' || number_of_siblings === '' || child_number === '' || weight === '' || height === '' || child_id === '' || history_accident_illness === '' || immunization_record === '') {
             res.json({ success: false, message: 'Please complete your information!!' })
         } else {
-            database.query('INSERT INTO child ( applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)', [applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id], (err, results) => {
+            database.query('INSERT INTO child ( applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id,history_accident_illness, immunization_record) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)', [applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id, history_accident_illness, immunization_record], (err, results) => {
                 if (err) {
                     throw err
                 }
@@ -37,19 +37,16 @@ module.exports = {
     },
     uploadPhoto(req, res) {
         if (req.file) {
-            console.log('have');
             const path = `/static/${req.file.filename}`
             const childID = req.params.id
-            console.log(childID);
             database.query(`UPDATE child SET child_photo = '${path}' WHERE child_id = '${childID}'`, (err, results) => {
                 if (err) {
                     throw err
                 }
-                res.status(204).json({ sucess: true, message: 'Complete to create data' })
+                res.status(204).json({ success: true, message: 'Complete to create data' })
             })
         } else {
-            console.log('not have');
-
+            console.log('failed to upload photo');
         }
     }
 } 
