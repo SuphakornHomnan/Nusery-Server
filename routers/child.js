@@ -12,6 +12,7 @@ var storage = multer.diskStorage({
 })
 var upload = multer({ storage: storage })
 
+router.get("/", controller.childController.getDataForProfile)
 router.delete("/delete/:id", controller.childController.deleteChild)
 router.post("/create", controller.childController.createChild)
 router.post("/upload/:id", upload.single('childPhoto'), controller.childController.uploadPhoto)

@@ -1,17 +1,16 @@
 const database = require('../database')
 
 module.exports = {
-    getData(req, res) {
-        database.query(`SELECT * FROM child`, (err, results) => {
+    getDataForProfile(req, res) {
+        database.query(`SELECT id,name,gender,weight,height, date FROM child`, (err, results) => {
             if (err) {
                 console.log(err);
             }
-            res.json({
-                success: true,
-                content: results.rows
-            })
+            console.log(results.rows);
+            res.json(results.rows)
         })
     },
+
     deleteChild(req, res) {
         const id = parseInt(req.params.id)
 
@@ -23,11 +22,12 @@ module.exports = {
         })
     },
     createChild(req, res) {
-        const { applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id, history_accident_illness, immunization_record } = req.body
-        if (applicationdate === '' || name === '' || nickname === '' || race === '' || nationality === '' || religion === '' || date === '' || number_of_siblings === '' || child_number === '' || weight === '' || height === '' || child_id === '' || history_accident_illness === '' || immunization_record === '') {
+        console.log(req.body);
+        const { applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id, history_accident_illness, immunization_record, gender } = req.body
+        if (applicationdate === '' || name === '' || nickname === '' || race === '' || nationality === '' || religion === '' || date === '' || number_of_siblings === '' || child_number === '' || weight === '' || height === '' || child_id === '' || history_accident_illness === '' || immunization_record === '' || gender === '') {
             res.json({ success: false, message: 'Please complete your information!!' })
         } else {
-            database.query('INSERT INTO child ( applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id,history_accident_illness, immunization_record) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)', [applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id, history_accident_illness, immunization_record], (err, results) => {
+            database.query('INSERT INTO child ( applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id,history_accident_illness, immunization_record, gender) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)', [applicationdate, name, nickname, race, nationality, religion, date, weight, height, number_of_siblings, child_number, child_id, history_accident_illness, immunization_record, gender], (err, results) => {
                 if (err) {
                     throw err
                 }
