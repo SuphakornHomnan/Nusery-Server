@@ -23,13 +23,13 @@ module.exports = {
                 const hash = results.rows[0].password
                 bcrypt.compare(password, hash, (err, results) => {
                     if (results) {
-                        res.json({ success: true, username: username, message: 'login success' })
+                        res.json({ success: true, username: username })
                     } else {
-                        res.json({ success: false, username: null, message: 'login failed' })
+                        res.json({ success: false, username: null, message: 'ชื่อหรือรหัสไม่ถูกต้อง' })
                     }
                 })
             } else {
-                res.json({ success: false, username: null, message: 'user not found' })
+                res.json({ success: false, username: null, message: 'ชื่อหรือรหัสไม่ถูกต้อง' })
             }
 
         })

@@ -7,7 +7,7 @@ module.exports = {
             if (err) {
                 throw err
             }
-            res.status(201).json({ success: true, message: "Success to add habitHistory"})
+            res.status(201).json({ success: true, message: "ลงทะเบียนเสร็จสิ้น"})
         })
     }
 }
