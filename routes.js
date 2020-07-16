@@ -11,4 +11,5 @@ router.use('/document', require('./routers/document'))
 router.use('/enrollment', require('./routers/enrollment'))
 router.use('/medicalHistory', require('./routers/medical'))
 router.use('/habitHistory', require('./routers/habit'))
+router.use('/attendance', require('./routers/attendance'))
 module.exports = router;
